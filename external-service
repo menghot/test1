@@ -12,3 +12,31 @@ spec:
       port: 80
       targetPort: 8080
   type: LoadBalancer
+
+
+
+
+
+apiVersion: v1
+    kind: Endpoints
+    metadata:
+      name: my-external-service-endpoint  # Name matching your Service
+    subsets:
+      - addresses:
+          - ip: <EXTERNAL_IP_ADDRESS>  # Replace with the actual external IP
+        ports:
+          - port: <EXTERNAL_PORT>      # Replace with the actual external port
+            name: http-port 
+
+
+
+apiVersion: v1
+    kind: Service
+    metadata:
+      name: my-external-service  # Name matching your Endpoint
+    spec:
+      ports:
+        - protocol: TCP
+          port: 80              # Port for the Service
+          targetPort: http-port # Target port name from the Endpoint
+      clusterIP: None   
