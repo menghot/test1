@@ -1,6 +1,6 @@
 https://download.java.net/java/GA/jdk24.0.2/fdc5d0102fe0414db21410ad5834341f/12/GPL/openjdk-24.0.2_windows-x64_bin.zip
 
-
+https://download.java.net/java/GA/jdk24.0.2/fdc5d0102fe0414db21410ad5834341f/12/GPL/openjdk-24.0.2_linux-x64_bin.tar.gz
 
 #openssl genrsa -out ca.key 2048
 #openssl req -new -x509 -days 3650 -key ca.key -subj "/C=CN/ST=GD/L=GZ/O=SC, Inc./CN=SC GDP Dev Root CA G1" -out ca.crt
