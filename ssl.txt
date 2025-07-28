@@ -1,0 +1,3 @@
+#openssl genrsa -out ca.key 2048
+#openssl req -new -x509 -days 3650 -key ca.key -subj "/C=CN/ST=GD/L=GZ/O=SC, Inc./CN=SC GDP Dev Root CA G1" -out ca.crt
+
