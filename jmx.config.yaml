@@ -1,0 +1,63 @@
+---
+startDelaySeconds: 0
+ssl: false
+lowercaseOutputName: false
+lowercaseOutputLabelNames: false
+includeObjectNames: ["java.lang:type=Threading", "io.trino.filesystem.alluxio:type=AlluxioCacheStats,name=iceberg"]
+autoExcludeObjectNameAttributes: true
+excludeObjectNameAttributes:
+  "java.lang:type=OperatingSystem":
+    - "ObjectName"
+  "java.lang:type=Runtime":
+    - "ClassPath"
+    - "SystemProperties"
+  "io.trino.filesystem.alluxio:type=AlluxioCacheStats,name=iceberg":
+    - "CacheReads.AllTime.P01"
+    - "CacheReads.AllTime.P05"
+    - "CacheReads.AllTime.P10"
+    - "CacheReads.AllTime.P25"
+    - "CacheReads.AllTime.P50"
+    - "CacheReads.AllTime.P75"
+    - "CacheReads.AllTime.P90"
+    - "CacheReads.AllTime.P95"
+    - "CacheReads.AllTime.P99"
+    - "CacheReads.FifteenMinutes.P01"
+    - "CacheReads.FifteenMinutes.P05"
+    - "CacheReads.FifteenMinutes.P10"
+    - "CacheReads.FifteenMinutes.P25"
+    - "CacheReads.FifteenMinutes.P50"
+    - "CacheReads.FifteenMinutes.P75"
+    - "CacheReads.FifteenMinutes.P90"
+    - "CacheReads.FifteenMinutes.P95"
+    - "CacheReads.FifteenMinutes.P99"
+    - "CacheReads.FiveMinutes.P01"
+    - "CacheReads.FiveMinutes.P05"
+    - "CacheReads.FiveMinutes.P10"
+    - "CacheReads.FiveMinutes.P25"
+    - "CacheReads.FiveMinutes.P50"
+    - "CacheReads.FiveMinutes.P75"
+    - "CacheReads.FiveMinutes.P90"
+    - "CacheReads.OneMinute.P95"
+    - "CacheReads.OneMinute.P99"
+    - "CacheReads.OneMinute.P01"
+    - "CacheReads.OneMinute.P05"
+    - "CacheReads.OneMinute.P10"
+    - "CacheReads.OneMinute.P25"
+    - "CacheReads.OneMinute.P50"
+    - "CacheReads.OneMinute.P75"
+    - "CacheReads.OneMinute.P90"
+    - "CacheReads.OneMinute.P95"
+    - "CacheReads.OneMinute.P99"
+rules:
+  - pattern: 'java*'
+  - pattern: 'trino*'
+
+
+
+
+#rules:
+#  - pattern: 'java\.lang<type=Threading><(.*)>ThreadCount: (.*)'
+#    name: java_lang_Threading_ThreadCount
+#    value: '$2'
+#    help: 'ThreadCount (java.lang<type=Threading><>ThreadCount)'
+#    type: UNTYPED
