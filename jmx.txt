@@ -5,3 +5,6 @@
 -Dcom.sun.management.jmxremote.authenticate=false
 -Dcom.sun.management.jmxremote.ssl=false
 -Djava.rmi.server.hostname=0.0.0.0
+
+
+includeObjectNames: ["java.lang:type=Threading", "trino.server:name=TaskResource","trino.memory:name=ClusterMemoryManager","io.airlift.http.server:name=HttpServer","trino.metadata:name=DiscoveryNodeManager","trino.security:name=AccessControlManager","trino.server:name=StatementHttpExecutionMBean","trino.execution:name=QueryManager"]
