@@ -4,3 +4,22 @@ https://download.java.net/java/GA/jdk24.0.2/fdc5d0102fe0414db21410ad5834341f/12/
 
 #openssl genrsa -out ca.key 2048
 #openssl req -new -x509 -days 3650 -key ca.key -subj "/C=CN/ST=GD/L=GZ/O=SC, Inc./CN=SC GDP Dev Root CA G1" -out ca.crt
+
+
+
+
+connector.name=xfile
+metadata-uri=file:/Users/simon/workspaces/trino-xfile/src/test/resources/example-data/example-metadata-http.json
+
+####
+fs.native-s3.enabled=true
+s3.aws-access-key=nDu2sEEwRzEqshz4L0dH
+s3.aws-secret-key=d70ZQaHihIpnMAloRXIrTTl8gtj57jS88ewXhjAP
+s3.endpoint=http://192.168.80.241:9000
+s3.path-style-access=true
+s3.region=true
+
+
+####
+fs.native-local.enabled=true
+local.location=/Users/simon/workspaces/trino-xfile/src/test/resources
