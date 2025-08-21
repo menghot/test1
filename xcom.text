@@ -1,0 +1,39 @@
+
+
+airflow-worker-0.airflow-worker.default.svc.cluster.local
+*** No logs found on s3 for ti=<TaskInstance: spark_submit_example.spark_submit_cluster manual__2025-08-21T05:12:15.405198+00:00 [running]>
+*** Found logs served from host http://airflow-worker-0.airflow-worker.default.svc.cluster.local:8793/log/dag_id=spark_submit_example/run_id=manual__2025-08-21T05:12:15.405198+00:00/task_id=spark_submit_cluster/attempt=1.log
+[2025-08-21, 05:12:16 UTC] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spark_submit_example.spark_submit_cluster manual__2025-08-21T05:12:15.405198+00:00 [queued]>
+[2025-08-21, 05:12:16 UTC] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spark_submit_example.spark_submit_cluster manual__2025-08-21T05:12:15.405198+00:00 [queued]>
+[2025-08-21, 05:12:16 UTC] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2025-08-21, 05:12:16 UTC] {taskinstance.py:2217} INFO - Executing <Task(KubernetesPodOperator): spark_submit_cluster> on 2025-08-21 05:12:15.405198+00:00
+[2025-08-21, 05:12:16 UTC] {standard_task_runner.py:60} INFO - Started process 662 to run task
+[2025-08-21, 05:12:16 UTC] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'spark_submit_example', 'spark_submit_cluster', 'manual__2025-08-21T05:12:15.405198+00:00', '--job-id', '190', '--raw', '--subdir', 'DAGS_FOLDER/xcom.py', '--cfg-path', '/tmp/tmpv32dtack']
+[2025-08-21, 05:12:16 UTC] {standard_task_runner.py:88} INFO - Job 190: Subtask spark_submit_cluster
+[2025-08-21, 05:12:17 UTC] {task_command.py:423} INFO - Running <TaskInstance: spark_submit_example.spark_submit_cluster manual__2025-08-21T05:12:15.405198+00:00 [running]> on host ***-worker-0.***-worker.default.svc.cluster.local
+[2025-08-21, 05:12:17 UTC] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spark_submit_example' AIRFLOW_CTX_TASK_ID='spark_submit_cluster' AIRFLOW_CTX_EXECUTION_DATE='2025-08-21T05:12:15.405198+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-21T05:12:15.405198+00:00'
+[2025-08-21, 05:12:17 UTC] {warnings.py:109} WARNING - /home/***/.local/lib/python3.9/site-packages/***/providers/cncf/kubernetes/operators/pod.py:1038: AirflowProviderDeprecationWarning: This function is deprecated. Please use `add_unique_suffix`.
+  pod.metadata.name = add_pod_suffix(pod_name=pod.metadata.name)
+[2025-08-21, 05:12:17 UTC] {pod.py:1057} INFO - Building pod spark-submit-cluster-v1z0w3tq with labels: {'dag_id': 'spark_submit_example', 'task_id': 'spark_submit_cluster', 'run_id': 'manual__2025-08-21T051215.4051980000-2b5590d7b', 'kubernetes_pod_operator': 'True', 'try_number': '1'}
+[2025-08-21, 05:12:17 UTC] {pod.py:526} INFO - Found matching pod spark-submit-cluster-v1z0w3tq with labels {'airflow_kpo_in_cluster': 'True', 'airflow_version': '2.8.4', 'dag_id': 'spark_submit_example', 'kubernetes_pod_operator': 'True', 'run_id': 'manual__2025-08-21T051215.4051980000-2b5590d7b', 'task_id': 'spark_submit_cluster', 'try_number': '1'}
+[2025-08-21, 05:12:17 UTC] {pod.py:527} INFO - `try_number` of task_instance: 1
+[2025-08-21, 05:12:17 UTC] {pod.py:528} INFO - `try_number` of pod: 1
+[2025-08-21, 05:12:17 UTC] {pod_manager.py:373} WARNING - Pod not yet started: spark-submit-cluster-v1z0w3tq
+[2025-08-21, 05:12:18 UTC] {pod_manager.py:373} WARNING - Pod not yet started: spark-submit-cluster-v1z0w3tq
+[2025-08-21, 05:12:19 UTC] {pod_manager.py:373} WARNING - Pod not yet started: spark-submit-cluster-v1z0w3tq
+[2025-08-21, 05:12:20 UTC] {pod_manager.py:373} WARNING - Pod not yet started: spark-submit-cluster-v1z0w3tq
+[2025-08-21, 05:12:21 UTC] {pod_manager.py:373} WARNING - Pod not yet started: spark-submit-cluster-v1z0w3tq
+[2025-08-21, 05:12:22 UTC] {pod_manager.py:373} WARNING - Pod not yet started: spark-submit-cluster-v1z0w3tq
+[2025-08-21, 05:12:23 UTC] {pod_manager.py:373} WARNING - Pod not yet started: spark-submit-cluster-v1z0w3tq
+[2025-08-21, 05:12:24 UTC] {pod_manager.py:483} INFO - [base] None
+[2025-08-21, 05:12:24 UTC] {pod_manager.py:718} INFO - Checking if xcom sidecar container is started.
+[2025-08-21, 05:12:24 UTC] {pod_manager.py:721} INFO - The xcom sidecar container is started.
+[2025-08-21, 05:12:24 UTC] {pod_manager.py:798} INFO - Running command... if [ -s /***/xcom/return.json ]; then cat /***/xcom/return.json; else echo __***_xcom_result_empty__; fi
+[2025-08-21, 05:12:24 UTC] {pod_manager.py:798} INFO - Running command... kill -s SIGINT 1
+[2025-08-21, 05:12:25 UTC] {pod.py:562} INFO - xcom result: 
+{"test_key":"test_value"}
+[2025-08-21, 05:12:25 UTC] {pod_manager.py:616} INFO - Pod spark-submit-cluster-v1z0w3tq has phase Running
+[2025-08-21, 05:12:27 UTC] {pod_manager.py:616} INFO - Pod spark-submit-cluster-v1z0w3tq has phase Running
+[2025-08-21, 05:12:29 UTC] {pod.py:914} INFO - Skipping deleting pod: spark-submit-cluster-v1z0w3tq
+[2025-08-21, 05:12:29 UTC] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=spark_submit_example, task_id=spark_submit_cluster, execution_date=20250821T051215, start_date=20250821T051216, end_date=20250821T051229
+[2025-08-21, 05:12:29 UTC] {local_task_job_runner.py:234} INFO - Task exited with return code 0
