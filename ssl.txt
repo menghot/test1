@@ -1,3 +1,40 @@
 #openssl genrsa -out ca.key 2048
 #openssl req -new -x509 -days 3650 -key ca.key -subj "/C=CN/ST=GD/L=GZ/O=SC, Inc./CN=SC GDP Dev Root CA G1" -out ca.crt
 
+
+
+# step2 =======  generate key and csr 
+# option 1:  
+openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=CN/ST=GD/L=SZ/O=MGG, Inc./CN=hive-stg.sc.co" -out server.csr
+# option 2:  
+openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=CN/ST=GD/L=SZ/O=MGG, Inc./CN=*.sc.co" -out server.csr
+
+# step3 =======  generate crt
+openssl x509 -req -extfile <(printf "subjectAltName=DNS:*.sc.co,IP:192.168.80.1") -days 365 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
+
+================================ 
+openssl x509 -noout -text -in ca.crt
+openssl x509 -noout -text -in server.crt
+
+
+
+
+
+
+
+================================  完整版本开始
+
+keytool -genkeypair -alias hms -keyalg RSA -keysize 2048 -validity 365 -keystore hms.jks -storepass changeit -dname "CN=hms-stg.sc.co, OU=IT, O=SC, L=GZ, S=GD, C=CN"
+keytool -certreq -alias hms -keystore hms.jks -file hms.csr -storepass changeit
+openssl x509 -req -in hms.csr -CA ../ca.crt -CAkey ../ca.key -CAcreateserial -out hms.crt -days 365 -extfile <(printf "subjectAltName=DNS.1:trino1.sc.co,IP.1:192.168.80.1")
+openssl x509 -noout -text -in hms.crt 
+keytool -import -trustcacerts -alias rootca -file ../ca.crt -keystore hms.jks  -storepass changeit  -noprompt
+keytool -import -alias hms -file hms.crt   -keystore hms.jks -storepass changeit  -noprompt
+keytool -list -v -keystore hms.jks  -storepass changeit 
+
+keytool -genkeypair -alias dummy -keyalg RSA -keystore truststore.jks -storepass changeit -dname "CN=Dummy" -validity 1
+keytool -delete -alias dummy -keystore truststore.jks -storepass changeit
+keytool -import -trustcacerts -alias rootca -file ../ca.crt -keystore truststore.jks  -storepass changeit  -noprompt
+		
+================================ 完整版本结束
+
